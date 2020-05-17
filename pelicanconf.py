@@ -22,14 +22,12 @@ AUTHOR_FEED_RSS = None
 # Blogroll
 LINKS = (('Pelican', 'http://getpelican.com/'),
          ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)
+         ('Jinja2', 'http://jinja.pocoo.org/'),)
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+SOCIAL = (('Email', 'mailto:alexanderjmohn@gmail.com'),)
 
 DEFAULT_PAGINATION = 10
-
+DEFAULT_DATE = 'fs'
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
