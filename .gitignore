@@ -1,4 +1,6 @@
 # Python Files
 __pycache__/*
-# Emacs files
+# Emacs Files
 *~
+# Output Files
+output/*
