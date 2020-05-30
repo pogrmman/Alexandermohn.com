@@ -1,0 +1,37 @@
+img { max-width: 100%; }
+
+/* Very small devices */
+* { font-size: 4vw; }
+
+/* Small devices */
+@media screen and (min-width: 600px) {
+		* { font-size: 3vw; }
+}
+
+/* Medium devices */
+@media screen and (min-width: 768px) {
+		* { font-size: 2vw; }
+}
+
+/* Large devices */
+@media screen and (min-width: 992px) {
+		* { font-size: 1.5vw; }
+}
+
+/* Very large devices */
+@media screen and (min-width: 1200px) {
+		* { font-size: 1.25vw; }
+}
+
+body {
+		font-family: Trebuchet MS, Arial Narrow, sans-serif;
+		font-size: 1em;
+}
+
+/* Headers */
+h1 { font-size: 2em; }
+h2 { font-size: 1.571em; }
+h3 { font-size: 1.429em; }
+h4 { font-size: 1.286em; }
+h5 { font-size: 1.143em; }
+h6 { font-size: 1em; }
