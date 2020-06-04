@@ -36,3 +36,63 @@ h3 { font-size: 1.429em; }
 h4 { font-size: 1.286em; }
 h5 { font-size: 1.143em; }
 h6 { font-size: 1em; }
+
+/* Nav Bar */
+.hidden {
+		display: none;
+}
+
+#menu label {
+		border: .1em;
+		font-size: 1.143em;
+		font-weight: bolder;
+		padding: .5vw;
+		background-color: #dddddd;
+		display: block;
+}
+
+#menu ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		background-color: #dddddd;
+		display: none;
+}
+
+#menu li {
+		float: left;
+}
+
+#menu a {
+		text-decoration: none;
+		text-align: center;
+		color: black;
+		display: block;
+		padding: .5vw;
+}
+
+#menu a:hover {
+		background-color: #eeeeee;
+}
+
+#menu li.active {
+		background-color: #cccccc;
+}
+		
+#menu-open:checked ~ ul {
+		display: flex;
+		flex-direction: column;
+}
+
+/* Menu Scaling */
+@media only screen and (min-width: 600px) {
+		#menu ul {
+				display: flex;
+				flex-direction: row;
+		}
+		#menu label { display: none; }
+		#menu-open:checked ~ ul {
+				display: flex;
+				flex-direction: row;
+		}
+}
