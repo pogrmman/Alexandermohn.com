@@ -1,33 +1,56 @@
-img { max-width: 100%; }
-
 /* Scaling */
 /* Very small devices */
 * { font-size: 4vw; }
+.content {
+		padding-left: 1em;
+		padding-right: 1em;
+}
 
 /* Small devices */
 @media screen and (min-width: 600px) {
 		* { font-size: 3vw; }
+		.content {
+				padding-left: 1.25em;
+				padding-right: 1.25em;
+		}
 }
 
 /* Medium devices */
 @media screen and (min-width: 768px) {
 		* { font-size: 2vw; }
+		.content {
+				padding-left: 3em;
+				padding-right: 3em;
+		}
 }
 
 /* Large devices */
 @media screen and (min-width: 992px) {
 		* { font-size: 1.5vw; }
+		.content {
+				padding-left: 4em;
+				padding-right: 4em;
+		}
 }
 
 /* Very large devices */
 @media screen and (min-width: 1200px) {
 		* { font-size: 1.25vw; }
+		.content {
+				padding-left: 5em;
+				padding-right: 5em;
+		}
 }
 
+/* General */
 body {
 		font-family: Trebuchet MS, Arial Narrow, sans-serif;
 		font-size: 1em;
+		margin: 0em;
+		padding-top: 2.07em;
 }
+
+img { max-width: 100%; }
 
 /* Headers */
 h1 { font-size: 2em; }
@@ -37,16 +60,40 @@ h4 { font-size: 1.286em; }
 h5 { font-size: 1.143em; }
 h6 { font-size: 1em; }
 
+/* Banner */
+#banner h1 {
+		background-color: #dddddd;
+		margin: 0;
+		padding: 0;
+		border-style: dotted;
+		display: none;
+}
+
+#banner a {
+		text-decoration: none;
+		text-align: center;
+		color: black;
+		padding: 0.25em;
+		display: block;
+		font-size: inherit;
+}
+
 /* Nav Bar */
 .hidden {
 		display: none;
 }
 
+.stuck-to-top {
+		position: fixed;
+		width: 100%;
+		top: 0;
+}
+
 #menu label {
 		border: .1em;
-		font-size: 1.143em;
+		font-size: 1.8em;
 		font-weight: bolder;
-		padding: .5vw;
+		padding: .125em;
 		background-color: #dddddd;
 		display: block;
 }
@@ -68,7 +115,7 @@ h6 { font-size: 1em; }
 		text-align: center;
 		color: black;
 		display: block;
-		padding: .5vw;
+		padding: .125em;
 }
 
 #menu a:hover {
@@ -91,6 +138,7 @@ h6 { font-size: 1em; }
 				flex-direction: row;
 		}
 		#menu label { display: none; }
+		#menu a { padding: .5em; }
 		#menu-open:checked ~ ul {
 				display: flex;
 				flex-direction: row;
