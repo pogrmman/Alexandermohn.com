@@ -1,7 +1,4 @@
 Title: Messier Catalog Sketching Project Introduction
-Tags: astronomy, sketching, Messier catalog
-Authors: Alexander Mohn
-Summary: Introduction to my Messier catalog sketching project
 
 ## Background
 As a first post to my website, I thought I'd write a brief introduction to a project I'm working on for

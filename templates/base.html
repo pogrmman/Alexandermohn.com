@@ -5,7 +5,7 @@
         <title>{% block title %}{{ page_title }}{% endblock title %}</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
         {% endblock head %}
 	</head>
 
@@ -16,16 +16,10 @@
             <input type="checkbox" id="menu-open" class="hidden">
             <label for="menu-open" onclick>≡</label>
             <ul>
-              {% for title, link in MENUITEMS %}
-                <li><a href="{{ link }}">{{ title }}</a></li>
-              {% endfor %}
-              {% if DISPLAY_PAGES_ON_MENU %}
-                {% for p in pages %}
-                  <li{% if p == page %} class="active"{% endif %}>
-                    <a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
-                  </li>
-                {% endfor %}
-              {% endif %}
+							<li><a href="/plants/">Plants</a></li>
+							<li><a href="/dev/">Development</a></li>
+							<li><a href="/misc/">Miscellaneous</a></li>
+							<li><a href="about_me.html">About Me</a></li>
             </ul>
           </div>
         </nav>

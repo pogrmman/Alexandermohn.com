@@ -7,17 +7,17 @@
 <div class="article-info">
 	<h1>{{ article.title }}</h1>
 	<p class="publish-date">
-		First Published: <b>{{ article.date }}</b>
+		First Published: <b>{{ article.date.strftime("%B %d, %Y") }}</b>
 	</p>
-	{% if article.modified != article.date %}
+	{% if (article.modified - article.date).days > 0 %}
 	  <p class="publish-date">
-		  | <i>Last Modified:</i> <b>{{ article.date }}</b>
+		  | <i>Last Modified:</i> <b>{{ article.modified.strftime("%B %d, %Y") }}</b>
 	  </p>
 	{% endif %}
 </div>
 <hr />
 <div class="article-content">
-	{{ article.content }}
+	{{ article.content|safe }}
 </div>
 <hr/>
 {% endblock %}
