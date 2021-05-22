@@ -5,13 +5,13 @@
 
 {% block content %}
 <div class="article-info">
-	<h1>{{ article.title|striptags }}</h1>
+	<h1>{{ article.title }}</h1>
 	<p class="publish-date">
-		First Published: <b>{{ article.date|strftime("%d %B %y") }}</b>
+		First Published: <b>{{ article.date }}</b>
 	</p>
 	{% if article.modified != article.date %}
 	  <p class="publish-date">
-		  | <i>Last Modified:</i> <b>{{ article.date|strftime("%d %B %y") }}</b>
+		  | <i>Last Modified:</i> <b>{{ article.date }}</b>
 	  </p>
 	{% endif %}
 </div>

@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="en">
+	<head>
         {% block head %}
-        <title>{% block title %}Alexander's Website{% endblock title %}</title>
+        <title>{% block title %}{{ page_title }}{% endblock title %}</title>
         <meta charset="utf-8" />
-        <meta name="generator" content="Pelican" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/style.css" />
         {% endblock head %}
-</head>
+	</head>
 
-<body id="index" class="home">
+	<body id="index" class="home">
         <nav id="menu">
           <div class="stuck-to-top">
 						<h4 class="title"><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h4>
@@ -27,13 +26,6 @@
                   </li>
                 {% endfor %}
               {% endif %}
-              {% if DISPLAY_CATEGORIES_ON_MENU %}
-                  {% for cat, null in categories %}
-                    <li{% if cat == category %} class="active"{% endif %}>
-                      <a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a>
-                    </li>
-                  {% endfor %}
-              {% endif %}
             </ul>
           </div>
         </nav>
@@ -41,13 +33,5 @@
           {% block content %}
           {% endblock %}
         </div>
-				<div class="footer">
-					<footer id="contentinfo" class="body">
-            <address id="about" class="vcard body">
-              Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
-              which takes great advantage of <a href="https://www.python.org/">Python</a>.
-            </address>
-					</footer>
-				</div>
-</body>
+	</body>
 </html>
