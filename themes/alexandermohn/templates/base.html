@@ -11,11 +11,9 @@
 </head>
 
 <body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="{{ SITEURL }}/">{{ SITENAME }}{% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a></h1>
-        </header><!-- /#banner -->
         <nav id="menu">
           <div class="stuck-to-top">
+						<h4 class="title"><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h4>
             <input type="checkbox" id="menu-open" class="hidden">
             <label for="menu-open" onclick>≡</label>
             <ul>
@@ -38,16 +36,18 @@
               {% endif %}
             </ul>
           </div>
-        </nav><!-- /#menu -->
+        </nav>
         <div class="content">
           {% block content %}
           {% endblock %}
         </div>
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
-                which takes great advantage of <a href="https://www.python.org/">Python</a>.
-                </address><!-- /#about -->
-        </footer><!-- /#contentinfo -->
+				<div class="footer">
+					<footer id="contentinfo" class="body">
+            <address id="about" class="vcard body">
+              Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+              which takes great advantage of <a href="https://www.python.org/">Python</a>.
+            </address>
+					</footer>
+				</div>
 </body>
 </html>

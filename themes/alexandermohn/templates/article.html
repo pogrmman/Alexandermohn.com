@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}
+  {{ article.title|truncate(30) }}
+{% endblock %}
+
+{% block content %}
+<div class="article-info">
+	<h1>{{ article.title|striptags }}</h1>
+	<p class="publish-date">
+		First Published: <b>{{ article.date|strftime("%d %B %y") }}</b>
+	</p>
+	{% if article.modified != article.date %}
+	  <p class="publish-date">
+		  | <i>Last Modified:</i> <b>{{ article.date|strftime("%d %B %y") }}</b>
+	  </p>
+	{% endif %}
+</div>
+<hr />
+<div class="article-content">
+	{{ article.content }}
+</div>
+<hr/>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}
+  Posts about {{ category }}
+{% endblock %}
+
+{% block content %}
+<div class="article-info">
+	<h1>Posts about {{ category }}</h1>
+	<hr />
+</div>
+<div class="article-list">
+	{% for article in articles %}
+	<h3><a href=/{{ article.url }}>{{ article.title }}</a></h3>
+	<p class="publish-date">
+		First Published: <b>{{ article.date|strftime("%d %B %y") }}</b>
+	</p>
+	{% if article.modified != article.date %}
+	  <p class="publish-date">
+		  <i>Last Modified:</i> <b>{{ article.date|strftime("%d %B %y") }}</b>
+	  </p>
+	{% endif %}
+	<p class="article-summary">{{ article.summary }}</p>
+	<hr />
+	{% endfor %}	
+</div>
+{% endblock %}
