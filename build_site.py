@@ -6,7 +6,7 @@ import settings
 
 def make_jinja_params(filepath):
     jinja_params = {}
-    f = pathlib.Path(filename)
+    f = pathlib.Path(filepath)
     if f.is_file():
         with f.open(mode = "r") as data:
             text = data.readlines()
@@ -57,6 +57,28 @@ def walk_dir(path):
             files.append(files_in_dir)
     return files
 
+def file_writer(file_list, renderer, pages_type):
+    markdown_files = []
+    for f in flatten(file_list):
+        if f.suffix == ".md":
+            markdown_files.append(f)
+    output_files = []
+    for f in markdown_files:
+        output_files.append(pathlib.Path("output").joinpath(*f.parts[1:]).with_suffix(".html"))
+    for i, o in zip(markdown_files, output_files):
+        o.parent.mkdir(parents = True, exist_ok = True)
+        if pages_type == "article":
+            o.write_text(renderer.render_article(i, "article.html"), encoding = "utf-8")
+        if pages_type == "page":
+            o.write_text(renderer.render_page(i, "page.html"), encoding = "utf-8")
+
+def flatten(lst):
+    for item in lst:
+        try:
+            yield from flatten(item)
+        except TypeError:
+            yield item
+            
 # Create a jinja environment to render the files
 jinja_renderer = Renderer("templates", {"SITENAME": settings.SITENAME,
                                         "SITEURL": settings.SITEURL})
