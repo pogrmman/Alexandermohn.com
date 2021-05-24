@@ -24,4 +24,4 @@ growing a range of different carnivores. As I became older and learned more abou
 other plants, I became drawn in to the immense diversity of the plant kingdom.
 Seemingly every plant has wonderful and interesting adaptations to their habitat,
 although not all are as obvious as the carnivores.
-![Test Image]({static}/images/Astronomy/M35.jpg)
+![Test Image](/static/images/Astronomy/M35.jpg)
