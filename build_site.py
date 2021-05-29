@@ -16,19 +16,19 @@ class Renderer(object):
         for key in jinja_globals:
             self.jinja_env.globals[key] = jinja_globals[key]
 
-    def render_article(self, filepath, template_name = None):
+    def render_article(self, jinja_params, template_name = None):
         if template_name:
             self.article_template = self.jinja_env.get_template(template_name)
         if self.article_template:
-            return self.article_template.render(article = make_jinja_params(filepath))
+            return self.article_template.render(article = jinja_params)
         else:
             raise "A template to build articles with has not been specified!"
 
-    def render_page(self, filepath, template_name = None):
+    def render_page(self, jinja_params, template_name = None):
         if template_name:
             self.page_template = self.jinja_env.get_template(template_name)
         if self.page_template:
-            return self.page_template.render(page = make_jinja_params(filepath))
+            return self.page_template.render(page = jinja_params)
         else:
             raise "A template to build pages with has not been specified!"
 
@@ -64,20 +64,30 @@ def walk_dir(path):
     return list(flatten(files))
 
 # Take a list of files, render the markdown files and make corresponding html files in output
-def file_writer(file_list, renderer, pages_type):
-    markdown_files = []
-    for f in file_list:
-        if f.suffix == ".md":
-            markdown_files.append(f)
-    output_files = []
-    for f in markdown_files:
-        output_files.append(pathlib.Path("output").joinpath(*f.parts[1:]).with_suffix(".html"))
-    for i, o in zip(markdown_files, output_files):
+def file_writer(html_path, renderer, pages_type):
+    for page in html_path:
+        i = page[0]
+        o = page[1]
         o.parent.mkdir(parents = True, exist_ok = True)
         if pages_type == "article":
             o.write_text(renderer.render_article(i, "article.html"), encoding = "utf-8")
         if pages_type == "page":
             o.write_text(renderer.render_page(i, "page.html"), encoding = "utf-8")
+
+# Make HTML file paths
+def make_HTML(paths):
+    markdown_files = []
+    for f in paths:
+        if f.suffix == ".md":
+            markdown_files.append(f)
+    output_files = []
+    for f in markdown_files:
+        output_files.append(pathlib.Path("output").joinpath(*f.parts[1:]).with_suffix(".html"))
+    return_list = []
+    for i, o in zip(markdown_files, output_files):
+        return_list.append([make_jinja_params(i), o])
+    return_list.sort(key = lambda x: x[0]["date"])
+    return return_list
 
 # Generator to flatten nested lists
 def flatten(lst):
@@ -116,6 +126,8 @@ if __name__ == "__main__":
     jinja_renderer = Renderer("templates", {"SITENAME": settings.SITENAME,
                                             "SITEURL": settings.SITEURL,
                                             "STATICDIR": settings.STATICDIR})
+    articles = make_HTML(articles)
+    pages = make_HTML(pages)
     file_writer(articles, jinja_renderer, "article")
     file_writer(pages, jinja_renderer, "page")
     # Copy static content
